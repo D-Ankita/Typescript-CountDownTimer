@@ -1,0 +1,133 @@
+/* 
+<div class="timerContainer">
+            <div class="displayUnit">
+                <p class="hours">00</p>
+                <p>:</p>
+                <p class="mins">00</p>
+                <p>:</p>
+                <p class="secs">00</p>
+            </div>
+            <div class="buttonsContainer">
+                <button class="startBtn"></button>
+                <button class="pauseBtn"></button>
+                <button class="stopBtn"></button>
+            </div>
+        </div>
+         */
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.timerContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(208, 254, 248);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 30px 30px;
+}
+
+.displayUnit {
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid blue; */
+    /* font-size: 5rem; */
+}
+.wrapper{
+    /* border: 2px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    font-size: 0.8rem;
+}
+input{
+    width: 4rem;
+    height: 3rem;
+    margin: 0px 10px;
+    padding: 10px;
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    cursor: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: none;
+    text-decoration: solid;
+
+    text-align: center;
+}
+
+.buttonsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+
+}
+
+button{
+    width: 5rem;
+    height: 2rem;
+    margin: 0px 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 2px solid rgb(20, 220, 193);
+    border-radius: 5px;
+    background-color: rgba(20, 220, 193, 0.462);
+}
+button:disabled{
+    border: 2px solid rgba(20, 220, 193, 0.059);
+    background-color: rgba(20, 220, 193, 0.085);
+}
+
+@media(max-width: 600px) {
+    *{
+        padding: 0px;
+    }
+    body {
+        font-size: 30%;
+        
+    }
+    .timer{
+        padding: 0px 0px;
+    }
+    button{
+        width: 5rem;
+        height: 2rem;
+        margin: 0px 2px;
+        padding: 1px;
+        font-size: 1rem;
+    }
+    .buttonsContainer{
+        margin: 1rem;
+    
+    }
+    .displayUnit {
+        font-size: 3rem;
+    }
+}

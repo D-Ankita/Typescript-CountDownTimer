@@ -1,0 +1,10 @@
+The initial structure of the page will be 
+#A block to choose the time to start timer DD : HH : MM : SS
+1. a display block DD : HH : MM : SS  -- showing the remaining time
+2. a start button
+3. a pause button
+4. a stop button
+ onclicking the start button the time should start 
+ onclicking the pause button the stpwtch should freeze at that point 
+ onclicking the stop button the clock should reset to  00 : 00 : 00
+ 
