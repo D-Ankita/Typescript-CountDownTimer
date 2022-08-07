@@ -7,44 +7,52 @@ class countDownTimer {
             let hourValue = hoursElement.valueAsNumber;
             console.log("hourValue", hourValue);
             let minsValue = minsElement.valueAsNumber;
-            console.log("hourValue", minsValue);
+            console.log("minsValue", minsValue);
             let secsValue = secondElement.valueAsNumber;
-            console.log("hourValue", secsValue);
+            console.log("secsValue", secsValue);
+            if (hourValue == 0 && minsValue == 0 && secsValue == 1) {
+                // var audio = new Audio("../../audio/Analog-alarm-clock-bell-rings-short-sound-effect.mp3");
+                // audio.play();
+                this.timerEnded();
+                return;
+            }
             // this.totalSeconds = 5;
-            // this.totalSeconds = ( hourValue * 3600 ) + (minsValue * 60) + (secsValue);
+            this.totalSeconds = (hourValue * 3600) + (minsValue * 60) + (secsValue);
+            console.log("totalSeconds", this.totalSeconds);
             //its work is to decrement the seconds.
             this.totalSeconds -= 1;
+            console.log("totalSeconds-1", this.totalSeconds);
             //convert the total seconds in HH MM SS
             // console.log(this);     
             const convertedTime = this.convertDisplayTime(this.totalSeconds);
             // console.log(convertedTime);
-            console.log(convertedTime);
+            console.log("convertedTime", convertedTime);
             //display on DOM
             hoursElement.valueAsNumber = convertedTime[0];
             minsElement.valueAsNumber = convertedTime[1];
             secondElement.valueAsNumber = convertedTime[2];
         };
-        this.hours = 0;
-        this.minutes = 0;
-        this.seconds = 0;
         this.totalSeconds = 0;
     }
     startTimer() {
-        this.intervalId = setInterval(this.displayTimer, 1000);
-        //making the input elements as read only;
-        let hoursElement = document.getElementById("hoursInput");
-        let minsElement = document.getElementById("minutesInput");
-        let secondElement = document.getElementById("secondsInput");
-        hoursElement.readOnly = true;
-        minsElement.readOnly = true;
-        secondElement.readOnly = true;
-        //changing the DOM
-        let pauseBtn = document.getElementById("pauseResume");
-        pauseBtn.disabled = false;
-        let startBtn = document.getElementById("startButton");
-        startBtn.disabled = true;
-        let stopButton = document.getElementById("stopButton");
-        stopButton.disabled = false;
+        if (this.validateInput()) {
+            this.intervalId = setInterval(this.displayTimer, 1000);
+            //making the input elements as read only;
+            let hoursElement = document.getElementById("hoursInput");
+            let minsElement = document.getElementById("minutesInput");
+            let secondElement = document.getElementById("secondsInput");
+            hoursElement.readOnly = true;
+            minsElement.readOnly = true;
+            secondElement.readOnly = true;
+            //changing the DOM
+            let pauseBtn = document.getElementById("pauseResume");
+            pauseBtn.disabled = false;
+            let startBtn = document.getElementById("startButton");
+            startBtn.disabled = true;
+            let stopButton = document.getElementById("stopButton");
+            stopButton.disabled = false;
+        }
+        ;
     }
     pauseTimer() {
         //pause if running & resume if paused.
@@ -75,12 +83,56 @@ class countDownTimer {
             this.intervalId = null;
             console.log("STOPPED");
         }
-        this.totalSeconds = -1;
-        this.displayTimer();
-        //making the input elements as read only;
+        this.reset();
+    }
+    convertDisplayTime(seconds) {
+        let hrs = 0;
+        let mins = 0;
+        let secs = 0;
+        hrs = Math.floor(seconds / 3600);
+        if (hrs < 0) {
+            hrs = 0;
+        }
+        ;
+        console.log("in convert fnctn:hrs", hrs);
+        mins = Math.floor((seconds - hrs * 3600) / 60);
+        if (mins < 0) {
+            mins = 0;
+        }
+        ;
+        console.log("in convert fnctn:mins", mins);
+        secs = seconds - hrs * 3600 - mins * 60;
+        if (secs < 0) {
+            secs = 0;
+        }
+        console.log("in convert fnctn:secs", secs);
+        const time = [hrs, mins, secs];
+        // console.log(time);
+        return time;
+    }
+    timerEnded() {
+        var audio = new Audio("../../audio/Analog-alarm-clock-bell-rings-short-sound-effect.mp3");
+        audio.play();
+        if (this.intervalId) {
+            // stop the this.interval
+            clearInterval(this.intervalId);
+            //make it null 
+            this.intervalId = null;
+            console.log("ENDED");
+        }
+        setTimeout(this.reset, 3000);
+        // this.reset()
+    }
+    reset() {
         let hoursElement = document.getElementById("hoursInput");
         let minsElement = document.getElementById("minutesInput");
         let secondElement = document.getElementById("secondsInput");
+        //resetting hh mm ss
+        this.totalSeconds = 0;
+        hoursElement.valueAsNumber = 0;
+        minsElement.valueAsNumber = 0;
+        secondElement.valueAsNumber = 0;
+        //making the input elements as read only;         
         hoursElement.readOnly = false;
         minsElement.readOnly = false;
         secondElement.readOnly = false;
@@ -92,16 +144,25 @@ class countDownTimer {
         let stopButton = document.getElementById("stopButton");
         stopButton.disabled = true;
     }
-    convertDisplayTime(seconds) {
-        let hours = 0;
-        let mins = 0;
-        let secs = 0;
-        hours = Math.floor(seconds / 3600);
-        mins = Math.floor((seconds - hours * 3600) / 60);
-        secs = seconds - hours * 3600 - mins * 60;
-        const time = [hours, mins, secs];
-        // console.log(time);
-        return time;
+    validateInput() {
+        let isvalid = false;
+        let hoursElement = document.getElementById("hoursInput");
+        let minsElement = document.getElementById("minutesInput");
+        let secondElement = document.getElementById("secondsInput");
+        console.log("hrs", Number.isNaN(hoursElement.valueAsNumber));
+        console.log("m", Number.isNaN(minsElement.valueAsNumber));
+        console.log("s", Number.isNaN(secondElement.valueAsNumber));
+        // if(Number.isNaN(hoursElement.valueAsNumber) || Number.isNaN(minsElement.valueAsNumber) || Number.isNaN(secondElement.valueAsNumber) ){
+        if (!(Number.isNaN(hoursElement.valueAsNumber) || Number.isNaN(minsElement.valueAsNumber) || Number.isNaN(secondElement.valueAsNumber))) {
+            // console.log("hrs",Number.isNaN(hoursElement.valueAsNumber));
+            // if (hoursElement.valueAsNumber !== NaN && secondElement.valueAsNumber != NaN && minsElement.valueAsNumber != NaN) {
+            isvalid = true;
+        }
+        else {
+            alert("Please enter all the feilds");
+        }
+        console.log("isvalid", isvalid);
+        return isvalid;
     }
     render() {
         const countDownContainer = document.createElement("div");
@@ -124,7 +185,7 @@ class countDownTimer {
         //id
         startBtn.id = "startButton";
         hoursInput.id = "hoursInput";
-        minsInput.id = "minsInput";
+        minsInput.id = "minutesInput";
         secondsInput.id = "secondsInput";
         pauseBtn.id = "pauseResume";
         stopBtn.id = "stopButton";
@@ -161,12 +222,12 @@ class countDownTimer {
         hoursInput.pattern = "[0-9]{2}";
         minsInput.pattern = "[0-9]{2}";
         secondsInput.pattern = "[0-9]{2}";
-        hoursInput.placeholder = "00";
-        minsInput.placeholder = "00";
-        secondsInput.placeholder = "00";
-        hoursInput.value = "00";
-        minsInput.value = "00";
-        secondsInput.value = "05";
+        hoursInput.placeholder = "HH";
+        minsInput.placeholder = "MM";
+        secondsInput.placeholder = "SS";
+        hoursInput.value = "0";
+        minsInput.value = "0";
+        secondsInput.value = "5";
         hoursInput.maxLength = 2;
         minsInput.maxLength = 2;
         secondsInput.maxLength = 2;
@@ -201,3 +262,4 @@ class countDownTimer {
     }
 }
 export default countDownTimer;
+//# sourceMappingURL=countDownTimer.js.map

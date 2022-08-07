@@ -8,3 +8,35 @@ The initial structure of the page will be
  onclicking the pause button the stpwtch should freeze at that point 
  onclicking the stop button the clock should reset to  00 : 00 : 00
  
+
+ Methods:
+
+ 1.startTimer()
+start the interval. setInterval(displayTimer function)
+button enable disabled -- start pause resume stop
+
+ 2.pauseTimer()
+pause resume
+button enable disabled -- start pause resume stop
+
+ 3.stopTimer()
+ clearInterval
+ button enable disabled -- start pause resume stop
+
+ 4.displayTimer()
+takes the display input
+sends to the convertDisplayTime function
+displays the result on dom
+
+ 5.convertDisplayTime()
+takes an array of hh mm ss
+converts to the seconds and returns the arry to be displayed
+checks if display is 0:0:0 then also calls the timer ended function.
+
+ 6.timerEnded()
+ plays a buzzer and calls reset dom
+
+ 7.resetDom()
+ resets the DOM to 00:00:00 
+ buttons to original start enable other two disables
+ input readonly reset
