@@ -1,4 +1,4 @@
-class countDownTimer {
+class CountDownTimer {
 
     totalSeconds: number
     intervalId?: number | null
@@ -310,7 +310,7 @@ class countDownTimer {
 
 }
 
-export default countDownTimer
+export default CountDownTimer
 
 
 
