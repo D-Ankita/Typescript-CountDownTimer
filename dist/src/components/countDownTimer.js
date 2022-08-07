@@ -149,17 +149,16 @@ class countDownTimer {
         let hoursElement = document.getElementById("hoursInput");
         let minsElement = document.getElementById("minutesInput");
         let secondElement = document.getElementById("secondsInput");
-        console.log("hrs", Number.isNaN(hoursElement.valueAsNumber));
-        console.log("m", Number.isNaN(minsElement.valueAsNumber));
-        console.log("s", Number.isNaN(secondElement.valueAsNumber));
-        // if(Number.isNaN(hoursElement.valueAsNumber) || Number.isNaN(minsElement.valueAsNumber) || Number.isNaN(secondElement.valueAsNumber) ){
         if (!(Number.isNaN(hoursElement.valueAsNumber) || Number.isNaN(minsElement.valueAsNumber) || Number.isNaN(secondElement.valueAsNumber))) {
-            // console.log("hrs",Number.isNaN(hoursElement.valueAsNumber));
-            // if (hoursElement.valueAsNumber !== NaN && secondElement.valueAsNumber != NaN && minsElement.valueAsNumber != NaN) {
             isvalid = true;
         }
         else {
             alert("Please enter all the feilds");
+            return isvalid;
+        }
+        if (hoursElement.valueAsNumber == 0 && minsElement.valueAsNumber == 0 && secondElement.valueAsNumber == 0) {
+            alert("minimum countDown of 1 second Required");
+            isvalid = false;
         }
         console.log("isvalid", isvalid);
         return isvalid;
@@ -219,6 +218,11 @@ class countDownTimer {
         hoursInput.type = "number";
         minsInput.type = "number";
         secondsInput.type = "number";
+        // hoursInput.min = "0";
+        // minsInput.min = "0";
+        // secondsInput.min = "0";
+        // minsInput.max = "60";
+        // secondsInput.max = "60";
         hoursInput.pattern = "[0-9]{2}";
         minsInput.pattern = "[0-9]{2}";
         secondsInput.pattern = "[0-9]{2}";
