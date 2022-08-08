@@ -1,5 +1,5 @@
-import countDownTimer from "./components/countDownTimer.js";
+import CountDownTimer from "./components/countDownTimer.js";
 const rootContainer = document.getElementById("root");
-var cdTimer = new countDownTimer();
+var cdTimer = new CountDownTimer();
 cdTimer.mount(rootContainer);
 //# sourceMappingURL=app.js.map

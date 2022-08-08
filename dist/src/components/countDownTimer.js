@@ -1,4 +1,4 @@
-class countDownTimer {
+class CountDownTimer {
     constructor() {
         this.displayTimer = () => {
             let hoursElement = document.getElementById("hoursInput");
@@ -111,7 +111,7 @@ class countDownTimer {
         return time;
     }
     timerEnded() {
-        var audio = new Audio("../../audio/Analog-alarm-clock-bell-rings-short-sound-effect.mp3");
+        var audio = new Audio("../../audio/music.mp3");
         audio.play();
         if (this.intervalId) {
             // stop the this.interval
@@ -265,5 +265,5 @@ class countDownTimer {
         el.appendChild(this.render());
     }
 }
-export default countDownTimer;
+export default CountDownTimer;
 //# sourceMappingURL=countDownTimer.js.map
