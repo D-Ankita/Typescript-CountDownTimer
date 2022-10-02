@@ -8,34 +8,45 @@ Plain CSS is used for styling.This project is not complete (as no web app could 
 This project is hosted on [Github Pages](https://github.com/D-Ankita/Typescript-CountDownTimer).
 
 ## About this Project
-One can type his day to day expenses in the `Description` feild, Amount Spent in the `Amount` feild and Date of Expense in the `Date` Feild and Add it using `Add` button. 
+One can use this simple countDown clock for any day to day activities like studying for 1 hour or maybe a screentime of 30 mins etc.. 
 
-<img width="503" alt="image" src="https://user-images.githubusercontent.com/46243069/193410128-51bb87e6-ed1c-4e4e-80b8-12d7b7b50f81.png">
+Simply set the time you wish to start, 
 
-The Expense when added will be displayed in form of a card.
+<img width="394" alt="image" src="https://user-images.githubusercontent.com/46243069/193444954-24b241b7-d087-46c3-8a85-c35ce392c342.png">
 
-<img width="221" alt="image" src="https://user-images.githubusercontent.com/46243069/193410150-083d8a89-e82b-4678-b870-fc33bfdf2fc2.png">
+and click the start button. 
 
-Additionally there is a `Clear All` option on the Right Corner which will help to erase all the entries at once.
+<img width="390" alt="image" src="https://user-images.githubusercontent.com/46243069/193444973-9ac0b25e-87a9-426c-a5f1-1ec9b2344bfe.png">
 
-<img width="958" alt="image" src="https://user-images.githubusercontent.com/46243069/193410158-217bad61-ac63-418d-bf9f-f6587abaeea6.png">
-
+as soon as the timer end, It will play a timeup sound.
 
 ## How to use
 one can directly start using the Application without any need to install by simply accessing the hosted link.
 
 ## To Download and run on local Machine
+### Prerequisites:
+1. Installed [VS-Code](https://code.visualstudio.com/)
+2. Installed [Node.js](https://nodejs.org/en/)
+
+### Next Steps.
+
 1. Clone the Repository
 ```
 git clone https://github.com/D-Ankita/Typescript-CountDownTimer.git
 ```
-2. Navigate to the folder and open index.html in the browser.
-
+2. Navigate to the folder and install the necessary dependencies.
+```
+npm install
+```
+3.run the Build and Start.
+```
+npm run build
+npm start
+```
 
 ## Screenshots
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/46243069/193410046-16e2476c-cc23-4207-bb7b-0a866ec355e3.png">
-<img width="956" alt="image" src="https://user-images.githubusercontent.com/46243069/193410099-96e63866-93dd-481c-ab92-5a8bde6df37c.png">
-
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/46243069/193444631-0b04aff9-3f00-4bf6-a5c5-99b6d5c24485.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/46243069/193444642-c1d66e37-78f7-4bf5-bf9d-6043016ac400.png">
 
 <hr>
 <img width="384" alt="Untitled_design-removebg-preview" src="https://user-images.githubusercontent.com/46243069/193410006-8bf45587-0a68-473f-a090-e2b1f61caf20.png">
